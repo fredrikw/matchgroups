@@ -18,3 +18,6 @@ git submodule update
 
 ## Known limitations ##
 After the "Randomize Groups" button is pressed, the data needs to be reparsed in order to try a different selection of individuals.
+
+[flot]: http://www.flotcharts.org/
+[jqparse]: https://github.com/mholt/jquery.parse
