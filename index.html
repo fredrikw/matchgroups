@@ -1,0 +1,131 @@
+<html>
+<head>
+	<title>Creation of matched groups</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="jquery.parse.js"></script>
+    <script src="matchgroups.js"></script>
+    <script src="flot/jquery.flot.js"></script>
+		<style>
+		body {
+			font-family: sans-serif;
+		}
+
+		textarea,
+		#delim {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+
+			font: 14px/1.5em 'Monaco', monospace;
+			outline: none;
+		}
+		textarea {
+			width: 100%;
+			padding: 10px;
+			height: 260px;
+		}
+
+		#delim {
+			width: 80px;
+		}
+
+		.container {
+			width: 100%;
+		}
+
+		.text-center {
+			text-align: center;
+		}
+
+		code {
+			white-space: pre;
+			font: 12px/1.25em 'Monaco', monospace;
+			background: #EEE;
+			display: block;
+			padding: 5px;
+		}
+
+		button {
+			font-size: 18px;
+			padding: 10px 40px;
+		}
+
+		.break {
+			clear: both;
+		}
+		</style>
+</head>
+<body>
+    <div class="container">
+        <textarea id="tb" placeholder="TSV data" placeholdernl>Individ	Score	Vikt
+1	3	170
+2	4	151
+3	3	161
+4	4	178
+17	1	153
+6	3	152
+7	0	157
+8	4	160
+13	1	159
+10	3	165
+9	0	160
+12	1	160
+14	1	167
+11	1	171
+15	1	175
+16	2	173
+5	1	180
+18	3	161
+19	2	180
+20	2	180
+		</textarea>
+        <div class="text-center">
+            <button id="parseText">Create graph</button>
+            <hr>
+        </div>
+		<div id="chartholder" class="demo-placeholder" style="float:left; width:675px;height: 450px;"></div>
+		<div id="infodiv" class="infodiv">
+			<table>
+				<tr>
+					<td class="infolabel">
+						Number of treatment groups:
+					</td>
+					<td class="infovalue">
+						<input type=text name="noftreatmentgroups" id="noftreatmentgroups" />
+					</td>
+				</tr>
+				<tr>
+					<td class="infolabel">
+						Number of selected individuals:
+					</td>
+					<td class="infovalue">
+						<span id="nofsels">0</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="infolabel">
+						Set matched group of selected to:
+					</td>
+					<td class="infovalue">
+						<select name="matchedgroup" id="matchedgroup" disabled=true>
+							<option value=""></option>
+							<option value="0">Ungrouped</option>
+							<option value="new">New group</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan=2>
+				        <div class="text-center">
+							<button id="randomize">Randomize groups</button>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="break">
+        	<code id="output"></code>
+    	</div>
+    </div>
+</body>
+</html>
